@@ -9,8 +9,12 @@ import android.util.Log;
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.Scopes;
 import com.google.android.gms.common.api.GoogleApiClient;
+import com.google.android.gms.common.api.ResultCallback;
 import com.google.android.gms.common.api.Scope;
+import com.google.android.gms.common.api.Status;
 import com.google.android.gms.fitness.Fitness;
+import com.google.android.gms.fitness.FitnessStatusCodes;
+import com.google.android.gms.fitness.data.DataType;
 
 import in.adoro.android.fitmeapp.R;
 
@@ -112,6 +116,21 @@ public class GoogleFit extends FragmentActivity implements GoogleApiClient.OnCon
     }
 
     private void findFitnessDataSources(){
-
+        Fitness.RecordingApi.subscribe(mClient, DataType.TYPE_ACTIVITY_SAMPLE)
+                .setResultCallback(new ResultCallback<Status>() {
+                    @Override
+                    public void onResult(Status status) {
+                        if (status.isSuccess()) {
+                            if (status.getStatusCode()
+                                    == FitnessStatusCodes.SUCCESS_ALREADY_SUBSCRIBED) {
+                                Log.i(TAG, "Existing subscription for activity detected.");
+                            } else {
+                                Log.i(TAG, "Successfully subscribed!");
+                            }
+                        } else {
+                            Log.i(TAG, "There was a problem subscribing.");
+                        }
+                    }
+                });
     }
 }
