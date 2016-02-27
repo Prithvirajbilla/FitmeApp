@@ -2,4 +2,111 @@
     <dimen name="app_bar_height">180dp</dimen>
     <dimen name="fab_margin">16dp</dimen>
     <dimen name="text_margin">16dp</dimen>
+
+
+    <!-- Default screen margins, per the Android Design guidelines. -->
+    <dimen name="activity_horizontal_margin">16dp</dimen>
+    <dimen name="activity_vertical_margin">16dp</dimen>
+    <!-- Per the design guidelines, navigation drawers should be between 240dp and 320dp:
+         https://developer.android.com/design/patterns/navigation-drawer.html -->
+    <dimen name="navigation_drawer_width">304dp</dimen>
+    <dimen name="navdrawer_header_height">178dp</dimen>
+    <dimen name="action_bar_height_material">56dp</dimen>
+    <dimen name="action_bar_title_text_size">20dp</dimen>
+    <dimen name="navdrawer_profile_thumbnail">64dp</dimen>
+
+    <dimen name="activity_gutter_margin">16dp</dimen>
+    <dimen name="activity_gutter_padding">14dp</dimen>
+    <dimen name="activity_gutter_margin_double">32dp</dimen>
+    <dimen name="block_spacing">8dp</dimen>
+    <dimen name="block_spacing_half">4dp</dimen>
+    <dimen name="block_spacing_quater">2dp</dimen>
+    <dimen name="block_margin">10dp</dimen>
+    <dimen name="layout_padding">12dp</dimen>
+    <dimen name="notification_top_gutter_margin">20dp</dimen>
+    <dimen name="notification_bottom_gutter_margin">20dp</dimen>
+    <dimen name="cta_btn_height">44dp</dimen>
+    <dimen name="publish_btn_height">36dp</dimen>
+    <dimen name="common_editbox_height">48dp</dimen>
+    <dimen name="login_gutter_margin">40dp</dimen>
+    <dimen name="login_top_gutter_margin">28dp</dimen>
+    <dimen name="look_social_icon">32dp</dimen>
+    <dimen name="category_card_size">76dp</dimen>
+    <dimen name="category_card_topmargin">12dp</dimen>
+    <dimen name="comment_card_side_padding">12dp</dimen>
+    <dimen name="common_hscroll_height">136dp</dimen>
+    <dimen name="related_prod_hscroll_height">136dp</dimen>
+
+    <dimen name="profile_item_horizontal_margin">28dp</dimen>
+    <dimen name="profile_item_vertical_margin">32dp</dimen>
+    <dimen name="login_vertical_margin">36dp</dimen>
+    <dimen name="card_height">120dp</dimen>
+    <dimen name="card_corner_radius">2dp</dimen>
+    <dimen name="card_elevation">1dp</dimen>
+    <dimen name="card_elevation_small">1dp</dimen>
+    <dimen name="card_corner_radius_settings">0dp</dimen>
+
+    <dimen name="color_icon_diameter">27dp</dimen>
+    <dimen name="thumbnail_size">40dp</dimen>
+    <dimen name="thumbnail_size_comments">38dp</dimen>
+    <dimen name="thumbnail_size_notification">42dp</dimen>
+    <dimen name="thumbnail_size_small">32dp</dimen>
+    <dimen name="cover_height">18dp</dimen>
+    <dimen name="profile_thumbnail_size">64dp</dimen>
+    <dimen name="product_thumbnail_width">80dp</dimen>
+    <dimen name="product_thumbnail_height">116dp</dimen>
+    <dimen name="spread_word_thumbnail_width">28dp</dimen>
+    <dimen name="spread_word_thumbnail_height">28dp</dimen>
+
+    <dimen name="settings_card_top_margin">8dp</dimen>
+    <dimen name="card_margin_settings">8dp</dimen>
+    <dimen name="settings_card_top_row_margin">12dp</dimen>
+    <dimen name="settings_card_top_row">56dp</dimen>
+    <dimen name="settings_card_middle_row">48dp</dimen>
+    <dimen name="settings_card_middle_row_padding">7dp</dimen>
+    <dimen name="settings_card_bottom_row_padding">15dp</dimen>
+    <dimen name="settings_faq_title_top_padding">10dp</dimen>
+    <dimen name="settings_faq_title_bottom_padding">18dp</dimen>
+    <dimen name="settings_faq_body_top_margin">-5dp</dimen>
+    <dimen name="settings_faq_body_bottom_padding">22dp</dimen>
+    <dimen name="settings_swc_margin_right">24dp</dimen>
+    <dimen name="settings_swc_middle_row">41dp</dimen>
+    <dimen name="settings_radiogroup_margin_top">24dp</dimen>
+    <dimen name="settings_radiogroup_margin_left">16dp</dimen>
+    <dimen name="settings_radiobutton_padding_left">24dp</dimen>
+    <dimen name="settings_radiobutton_margin_top">4dp</dimen>
+    <dimen name="settings_radiobutton_margin_bottom">16dp</dimen>
+    <dimen name="settings_radiobutton_underline_margin_left">56dp</dimen>
+    <dimen name="settings_radiobutton_underline_margin_top">8dp</dimen>
+    <dimen name="settings_sharing_margin_bottom">40dp</dimen>
+    <dimen name="settings_sharing_line_margin_top">-8dp</dimen>
+    <dimen name="settings_sharing_text_height">24dp</dimen>
+    <dimen name="settings_size_prefs_text_width">80dp</dimen>
+    <dimen name="settings_size_prefs_text_bottom_padding">12dp</dimen>
+    <dimen name="settings_size_prefs_bottom_margin">16dp</dimen>
+    <dimen name="settings_size_prefs_spinner_width">180dp</dimen>
+    <dimen name="settings_size_prefs_spinner_underline_width">172dp</dimen>
+    <dimen name="settings_spread_word_padding_top">16dp</dimen>
+    <dimen name="settings_spread_word_height">40dp</dimen>
+    <dimen name="settings_spread_word_underline">2dp</dimen>
+    <dimen name="drawer_layout_elevation">4dp</dimen>
+    <item name="cancel_alpha" format="float" type="dimen">0.7</item>
+    <dimen name="card_padding">8dp</dimen>
+
+    <!-- Look 4x4 width will be 328dp , OUR IS 280dp, 3x4 is 244dp-->
+    <dimen name="lookblock_image_height">328dp</dimen>
+    <dimen name="productblock_image_height">232dp</dimen>
+    <!--layout_height="217dp + 12dp" 280,
+        width is assumed to be 160dp,
+        232 or 464px same as Jabong image height.-->
+
+    <dimen name="card_view_avg_border">1dp</dimen>
+    <dimen name="filter_padding">100dp</dimen>
+    <dimen name="list_item_padding">54dp</dimen>
+    <dimen name="card_view_margin_shadow">2dp</dimen>
+    <dimen name="setting_drawable_padding">34dp</dimen>
+
+    <dimen name="swipe_refresh_offset">80dp</dimen>
+    <dimen name="toolbar_height">56dp</dimen>
+    <dimen name="layout_padding_half">6dp</dimen>
 </resources>

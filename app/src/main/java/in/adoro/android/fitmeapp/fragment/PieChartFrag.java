@@ -1,7 +1,6 @@
 package in.adoro.android.fitmeapp.fragment;
 
 import android.graphics.Color;
-import android.graphics.Typeface;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.text.SpannableString;
@@ -34,12 +33,12 @@ public class PieChartFrag extends SimpleFragment {
         mChart = (PieChart) v.findViewById(R.id.pieChart1);
         mChart.setDescription("");
 
-        Typeface tf = Typeface.createFromAsset(getActivity().getAssets(), "OpenSans-Light.ttf");
+        //Typeface tf = Typeface.createFromAsset(getActivity().getAssets(), "OpenSans-Light.ttf");
 
-        mChart.setCenterTextTypeface(tf);
+        //mChart.setCenterTextTypeface(tf);
         mChart.setCenterText(generateCenterText());
         mChart.setCenterTextSize(10f);
-        mChart.setCenterTextTypeface(tf);
+        //mChart.setCenterTextTypeface(tf);
 
         // radius of the center hole in percent of maximum radius
         mChart.setHoleRadius(45f);
