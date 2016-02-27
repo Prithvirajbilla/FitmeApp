@@ -7,6 +7,8 @@ import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import butterknife.Bind;
+import butterknife.ButterKnife;
 import in.adoro.android.fitmeapp.R;
 import in.adoro.android.fitmeapp.core.PA;
 

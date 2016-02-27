@@ -7,6 +7,12 @@ import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.TextView;
 
+import com.txusballesteros.widgets.FitChart;
+import com.txusballesteros.widgets.FitChartValue;
+
+import java.util.ArrayList;
+import java.util.Collection;
+
 import butterknife.Bind;
 
 public class ProfileActivity extends BaseActivity {
@@ -29,5 +35,18 @@ public class ProfileActivity extends BaseActivity {
                         .setAction("Action", null).show();
             }
         });
+
+        final FitChart fitChart = (FitChart)findViewById(R.id.fitChart);
+        fitChart.setMinValue(0f);
+        fitChart.setMaxValue(100f);
+
+        Collection<FitChartValue> values = new ArrayList<>();
+        values.add(new FitChartValue(30f, 0x2d4302));
+        values.add(new FitChartValue(20f, 0x75a80d));
+        values.add(new FitChartValue(15f, 0x8fc026));
+        values.add(new FitChartValue(10f, 0xB5CC84));
+        fitChart.setValues(values);
+
+
     }
 }

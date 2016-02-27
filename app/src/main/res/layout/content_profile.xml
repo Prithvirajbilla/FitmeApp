@@ -8,6 +8,16 @@
     tools:context=".ui.ProfileActivity"
     tools:showIn="@layout/activity_profile">
 
+    <com.txusballesteros.widgets.FitChart
+        android:id="@+id/fitChart"
+        android:layout_width="200dp"
+        android:layout_height="200dp"
+        app:strokeSize="10dp"
+        app:valueStrokeColor="#ff0000"
+        app:backStrokeColor="#00ff00"
+        app:animationMode="overdraw"/>
+
+
     <TextView
         android:id="@+id/random_text"
         android:layout_width="wrap_content"
