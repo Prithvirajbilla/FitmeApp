@@ -1,4 +1,4 @@
-package in.adoro.android.fitmeapp.adapter;
+package in.adoro.android.fitmeapp.ui.adapter;
 
 import android.content.Context;
 import android.support.v7.widget.RecyclerView;
@@ -7,9 +7,9 @@ import android.view.ViewGroup;
 
 import java.util.List;
 
-import in.adoro.android.fitmeapp.ViewHolder.PAViewHolder;
+import in.adoro.android.fitmeapp.ui.ViewHolder.PAViewHolder;
 import in.adoro.android.fitmeapp.core.PA;
-import in.adoro.android.fitmeapp.view.PAView;
+import in.adoro.android.fitmeapp.ui.view.PAView;
 
 
 public class SelectActivityAdapter extends RecyclerView.Adapter<PAViewHolder> {

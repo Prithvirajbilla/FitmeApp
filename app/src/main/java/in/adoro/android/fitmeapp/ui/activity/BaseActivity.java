@@ -1,8 +1,10 @@
-package in.adoro.android.fitmeapp;
+package in.adoro.android.fitmeapp.ui.activity;
 
 import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
+
+import in.adoro.android.fitmeapp.R;
 
 
 public class BaseActivity extends AppCompatActivity {
@@ -18,7 +20,7 @@ public class BaseActivity extends AppCompatActivity {
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
+        // automatically handle clicks on the Home/Up loginButton, so long
         // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
 

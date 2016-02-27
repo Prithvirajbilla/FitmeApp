@@ -1,4 +1,4 @@
-package in.adoro.android.fitmeapp.view;
+package in.adoro.android.fitmeapp.ui.view;
 
 import android.content.Context;
 import android.util.AttributeSet;
@@ -7,6 +7,8 @@ import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import butterknife.Bind;
+import butterknife.ButterKnife;
 import in.adoro.android.fitmeapp.R;
 import in.adoro.android.fitmeapp.core.PA;
 

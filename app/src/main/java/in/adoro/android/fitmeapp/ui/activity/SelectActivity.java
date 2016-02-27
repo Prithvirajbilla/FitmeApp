@@ -1,4 +1,4 @@
-package in.adoro.android.fitmeapp;
+package in.adoro.android.fitmeapp.ui.activity;
 
 import android.os.Bundle;
 import android.os.PersistableBundle;
@@ -9,7 +9,8 @@ import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.FrameLayout;
 
-import in.adoro.android.fitmeapp.fragment.SelectActivityFragment;
+import in.adoro.android.fitmeapp.R;
+import in.adoro.android.fitmeapp.ui.fragment.SelectActivityFragment;
 
 
 public class SelectActivity extends BaseActivity {

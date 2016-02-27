@@ -1,4 +1,4 @@
-package in.adoro.android.fitmeapp.fragment;
+package in.adoro.android.fitmeapp.ui.fragment;
 
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -11,8 +11,9 @@ import android.view.ViewGroup;
 
 import butterknife.Bind;
 
+import butterknife.ButterKnife;
 import in.adoro.android.fitmeapp.R;
-import in.adoro.android.fitmeapp.adapter.SelectActivityAdapter;
+import in.adoro.android.fitmeapp.ui.adapter.SelectActivityAdapter;
 
 
 public class SelectActivityFragment extends Fragment {
