@@ -8,6 +8,9 @@
     tools:context=".ui.ProfileActivity"
     tools:showIn="@layout/activity_profile">
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
     <com.txusballesteros.widgets.FitChart
         android:id="@+id/fitChart"
         android:layout_width="200dp"
@@ -25,6 +28,6 @@
         android:layout_margin="@dimen/text_margin"
         android:text="@string/large_text" />
 
-
+    </LinearLayout>
 
 </android.support.v4.widget.NestedScrollView>
