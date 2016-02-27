@@ -1,4 +1,4 @@
-package in.adoro.android.fitmeapp;
+package in.adoro.android.fitmeapp.ui.activity;
 
 /**
  * author: shobhitagarwal on 27/02/16.

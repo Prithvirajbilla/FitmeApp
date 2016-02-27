@@ -9,14 +9,8 @@ import android.view.View;
 
 import in.adoro.android.fitmeapp.PieChartActivity;
 import in.adoro.android.fitmeapp.R;
-import android.widget.TextView;
-
-import butterknife.Bind;
 
 public class ProfileActivity extends BaseActivity {
-
-    @Bind(R.id.random_text)
-    public TextView txtRandom;
 
     /*@Bind(R.id.fitChart)
     public FitChart fitChart;*/
