@@ -1,5 +1,6 @@
 package in.adoro.android.fitmeapp.ui.activity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -8,12 +9,6 @@ import android.view.View;
 
 import in.adoro.android.fitmeapp.R;
 import android.widget.TextView;
-
-import com.txusballesteros.widgets.FitChart;
-import com.txusballesteros.widgets.FitChartValue;
-
-import java.util.ArrayList;
-import java.util.Collection;
 
 import butterknife.Bind;
 
@@ -52,14 +47,19 @@ public class ProfileActivity extends BaseActivity {
     }
 
     private void fillFitChart(){
-        final FitChart fitChart = (FitChart)findViewById(R.id.fitChart);
+
+        Intent intent = new Intent(getApplicationContext(), PieChartActivity.class);
+        this.startActivity(intent);
+
+
+        /*final FitChart fitChart = (FitChart)findViewById(R.id.fitChart);
 
         Collection<FitChartValue> values = new ArrayList<>();
         values.add(new FitChartValue(30f, 0x2d4302));
         values.add(new FitChartValue(20f, 0x75a80d));
         values.add(new FitChartValue(15f, 0x8fc026));
         values.add(new FitChartValue(10f, 0xB5CC84));
-        fitChart.setValues(values);
+        fitChart.setValues(values);*/
 
     }
 }

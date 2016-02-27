@@ -1,4 +1,4 @@
-package in.adoro.android.fitmeapp.utils.charting;
+package in.adoro.android.fitmeapp;
 
 import android.graphics.Color;
 import android.graphics.Typeface;
@@ -28,7 +28,7 @@ import com.github.mikephil.charting.utils.ColorTemplate;
 
 import java.util.ArrayList;
 
-import in.adoro.android.fitmeapp.R;
+import in.adoro.android.fitmeapp.utils.charting.DemoBase;
 
 /**
  * author: shobhitagarwal on 27/02/16.
@@ -67,9 +67,9 @@ public class PieChartActivity extends DemoBase implements SeekBar.OnSeekBarChang
 
         mChart.setDragDecelerationFrictionCoef(0.95f);
 
-        tf = Typeface.createFromAsset(getAssets(), "OpenSans-Regular.ttf");
+        //tf = Typeface.createFromAsset(getAssets());//, "OpenSans-Regular.ttf");
 
-        mChart.setCenterTextTypeface(Typeface.createFromAsset(getAssets(), "OpenSans-Light.ttf"));
+        //mChart.setCenterTextTypeface(Typeface.createFromAsset(getAssets(), "OpenSans-Light.ttf"));
         mChart.setCenterText(generateCenterSpannableText());
 
         mChart.setDrawHoleEnabled(true);
@@ -240,13 +240,13 @@ public class PieChartActivity extends DemoBase implements SeekBar.OnSeekBarChang
 
     private SpannableString generateCenterSpannableText() {
 
-        SpannableString s = new SpannableString("MPAndroidChart\ndeveloped by Philipp Jahoda");
-        s.setSpan(new RelativeSizeSpan(1.7f), 0, 14, 0);
-        s.setSpan(new StyleSpan(Typeface.NORMAL), 14, s.length() - 15, 0);
-        s.setSpan(new ForegroundColorSpan(Color.GRAY), 14, s.length() - 15, 0);
-        s.setSpan(new RelativeSizeSpan(.8f), 14, s.length() - 15, 0);
-        s.setSpan(new StyleSpan(Typeface.ITALIC), s.length() - 14, s.length(), 0);
-        s.setSpan(new ForegroundColorSpan(ColorTemplate.getHoloBlue()), s.length() - 14, s.length(), 0);
+        SpannableString s = new SpannableString("Today's Calories Burn\nActivities wise break down");
+        s.setSpan(new RelativeSizeSpan(1.7f), 0, 21, 0);
+        s.setSpan(new StyleSpan(Typeface.NORMAL), 21, s.length() - 22, 0);
+        s.setSpan(new ForegroundColorSpan(Color.GRAY), 21, s.length() - 22, 0);
+        s.setSpan(new RelativeSizeSpan(.8f), 21, s.length() - 22, 0);
+        s.setSpan(new StyleSpan(Typeface.ITALIC), s.length() - 12, s.length(), 0);
+        s.setSpan(new ForegroundColorSpan(ColorTemplate.getHoloBlue()), s.length() - 15, s.length(), 0);
         return s;
     }
 
