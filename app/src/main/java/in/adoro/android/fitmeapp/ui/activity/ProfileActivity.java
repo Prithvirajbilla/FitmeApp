@@ -7,6 +7,7 @@ import android.support.design.widget.Snackbar;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 
+import in.adoro.android.fitmeapp.PieChartActivity;
 import in.adoro.android.fitmeapp.R;
 import android.widget.TextView;
 
