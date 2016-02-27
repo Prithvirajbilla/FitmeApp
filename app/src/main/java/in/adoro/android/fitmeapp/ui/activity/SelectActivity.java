@@ -19,6 +19,7 @@ public class SelectActivity extends BaseActivity {
 
     public SelectActivityFragment mSelectActivityFragment;
 
+
     @Override
     public void onCreate(Bundle savedInstanceState, PersistableBundle persistentState) {
         super.onCreate(savedInstanceState, persistentState);

@@ -1,5 +1,7 @@
 <resources>
-    <string name="app_name">FitMe</string>
+    <string name="app_name">FitBilla</string>
+    <string name="title_activity_profile">My Profile</string>
+
     <string name="large_text">
         "Material is the metaphor.\n\n"
 

@@ -2,6 +2,7 @@ apply plugin: 'com.android.application'
 
 repositories {
     mavenCentral()
+    maven { url "https://jitpack.io" }
 }
 
 android {
@@ -55,5 +56,10 @@ dependencies {
     compile 'com.squareup.okhttp3:logging-interceptor:3.0.0-RC1'
     compile 'com.squareup.okhttp3:okhttp:3.0.0-RC1'
     compile 'com.facebook.android:facebook-android-sdk:4.8.2'
+
+    compile 'com.github.PhilJay:MPAndroidChart:v2.2.2'
+    compile 'com.txusballesteros:FitChart:1.0'
+
+
 
 }

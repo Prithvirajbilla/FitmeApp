@@ -10,7 +10,6 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import butterknife.Bind;
-
 import butterknife.ButterKnife;
 import in.adoro.android.fitmeapp.R;
 import in.adoro.android.fitmeapp.ui.adapter.SelectActivityAdapter;
