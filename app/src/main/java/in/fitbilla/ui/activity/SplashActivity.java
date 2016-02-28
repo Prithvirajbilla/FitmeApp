@@ -60,6 +60,10 @@ public class SplashActivity extends BaseActivity {
             loginButton.registerCallback(callbackManager, new FacebookCallback<LoginResult>() {
                 @Override
                 public void onSuccess(LoginResult loginResult) {
+                    accessTokenFB = loginResult.getAccessToken();
+                    UserProfile profile = new UserProfile();
+                    profile.setUserId(1);
+                    FitMeApplication.setUserProfileToPref(profile, SplashActivity.this);
                     Intent intent = new Intent(SplashActivity.this, SelectDimensionActivity.class);
                     startActivity(intent);
                     finish();
@@ -85,6 +89,10 @@ public class SplashActivity extends BaseActivity {
                 loginButton.registerCallback(callbackManager, new FacebookCallback<LoginResult>() {
                     @Override
                     public void onSuccess(LoginResult loginResult) {
+                        accessTokenFB = loginResult.getAccessToken();
+                        UserProfile profile = new UserProfile();
+                        profile.setUserId(1);
+                        FitMeApplication.setUserProfileToPref(profile, SplashActivity.this);
                         Intent intent = new Intent(SplashActivity.this, SelectDimensionActivity.class);
                         startActivity(intent);
                         finish();
