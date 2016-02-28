@@ -15,8 +15,8 @@
 
     <in.adoro.android.fitmeapp.utils.charting.CircleTimerView
         android:id="@+id/ctv_duration"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
         android:layout_alignParentTop="true"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true">
