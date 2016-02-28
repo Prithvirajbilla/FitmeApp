@@ -20,6 +20,9 @@ import android.view.ViewGroup;
 
 import android.widget.TextView;
 
+import butterknife.ButterKnife;
+import in.adoro.android.fitmeapp.utils.charting.CircleTimerView;
+
 public class WorkoutActivity extends AppCompatActivity {
 
     /**
@@ -45,7 +48,7 @@ public class WorkoutActivity extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         // Create the adapter that will return a fragment for each of the three
-        // primary sections of the activity.
+        // primary sections        of the activity.
         mSectionsPagerAdapter = new SectionsPagerAdapter(getSupportFragmentManager());
 
         // Set up the ViewPager with the sections adapter.
@@ -63,8 +66,12 @@ public class WorkoutActivity extends AppCompatActivity {
                         .setAction("Action", null).show();
                 fab.setBackgroundTintList(ColorStateList.valueOf(getResources().getColor(R.color.colorAccent)));
                 fab.setImageResource(R.drawable.ic_pause_24dp);
+                PlaceholderFragment.startTimer();
+
+
             }
         });
+        ButterKnife.bind(this);
 
     }
 
@@ -101,6 +108,8 @@ public class WorkoutActivity extends AppCompatActivity {
          */
         private static final String ARG_SECTION_NUMBER = "section_number";
 
+        private static CircleTimerView ctvDuration;
+
         public PlaceholderFragment() {
         }
 
@@ -126,8 +135,26 @@ public class WorkoutActivity extends AppCompatActivity {
             View rootView = inflater.inflate(R.layout.fragment_workout, container, false);
             TextView textView = (TextView) rootView.findViewById(R.id.section_label);
             textView.setText(getString(R.string.section_format, getArguments().getInt(ARG_SECTION_NUMBER)));
+
+            if(null!= rootView.findViewById(R.id.ctv_duration)){
+                ctvDuration = (CircleTimerView) rootView.findViewById(R.id.ctv_duration);
+            }
+
             return rootView;
+
         }
+
+        public static void startTimer(){
+            if (ctvDuration!=null)
+                ctvDuration.startTimer();
+        }
+        public static void pauseTimer(){
+            if (ctvDuration!=null)
+                ctvDuration.pauseTimer();
+        }
+
+
+
     }
 
     /**
