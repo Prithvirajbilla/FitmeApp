@@ -82,8 +82,6 @@ public class ProfileActivity extends BaseActivity {
         //fillFitChart();
 
         fillTodayProfileChart();
-        GoogleFit googleFit = new GoogleFit();
-        googleFit.readHistoryData();
     }
 
     @OnClick(R.id.fab)
