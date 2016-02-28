@@ -58,7 +58,7 @@ dependencies {
     compile 'com.squareup.okhttp3:logging-interceptor:3.0.0-RC1'
     compile 'com.squareup.okhttp3:okhttp:3.0.0-RC1'
     compile 'com.facebook.android:facebook-android-sdk:4.8.2'
-    compile 'com.txusballesteros:FitChart:1.0'
+    compile 'com.github.PhilJay:MPAndroidChart:v2.2.2'
     compile 'com.android.support:support-v4:23.1.1'
     compile 'com.felipecsl:gifimageview:2.0.0'
 }
