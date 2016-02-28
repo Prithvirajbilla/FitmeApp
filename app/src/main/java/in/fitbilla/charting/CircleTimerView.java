@@ -503,7 +503,7 @@ public class CircleTimerView extends View
                     handler.obtainMessage().sendToTarget();
                 }
             };
-            timer.schedule(timerTask, 1000, 1000);
+            timer.schedule(timerTask, 0, 100);
             mStarted = true;
             if (this.mCircleTimerListener != null)
             {
@@ -562,7 +562,7 @@ public class CircleTimerView extends View
 
 
     /**
-     * set the hint text, default is 时间设置
+     * set the hint text, default is duration
      *
      * @param value String value
      */

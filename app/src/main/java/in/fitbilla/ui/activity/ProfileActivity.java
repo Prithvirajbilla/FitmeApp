@@ -32,6 +32,7 @@ import butterknife.OnClick;
 import in.fitbilla.PieChartActivity;
 import in.fitbilla.R;
 import in.fitbilla.TrackActivity;
+import in.fitbilla.WorkoutActivity;
 
 public class ProfileActivity extends BaseActivity {
 
@@ -237,7 +238,7 @@ public class ProfileActivity extends BaseActivity {
     }
 
     private void navigateToActivityPage(int i){
-        Intent intent = new Intent(getApplicationContext(), TrackActivity.class);
+        Intent intent = new Intent(getApplicationContext(), WorkoutActivity.class);
         this.startActivity(intent);
     }
 }

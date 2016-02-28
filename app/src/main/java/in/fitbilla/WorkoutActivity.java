@@ -1,6 +1,7 @@
 package in.fitbilla;
 
 import android.content.res.ColorStateList;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -18,10 +19,21 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
-import butterknife.ButterKnife;
-import in.fitbilla.charting.CircleTimerView;
+import com.github.mikephil.charting.charts.LineChart;
+import com.github.mikephil.charting.components.YAxis;
+import com.github.mikephil.charting.data.Entry;
+import com.github.mikephil.charting.data.LineData;
+import com.github.mikephil.charting.data.LineDataSet;
+import com.github.mikephil.charting.highlight.Highlight;
+import com.github.mikephil.charting.interfaces.datasets.ILineDataSet;
+import com.github.mikephil.charting.listener.OnChartValueSelectedListener;
 
-public class WorkoutActivity extends AppCompatActivity {
+import java.math.BigDecimal;
+import java.util.Calendar;
+
+import butterknife.ButterKnife;
+
+public class WorkoutActivity extends AppCompatActivity implements OnChartValueSelectedListener {
 
     /**
      * The {@link android.support.v4.view.PagerAdapter} that will provide
@@ -32,6 +44,9 @@ public class WorkoutActivity extends AppCompatActivity {
      * {@link android.support.v4.app.FragmentStatePagerAdapter}.
      */
     private SectionsPagerAdapter mSectionsPagerAdapter;
+
+    private static long activityStartTime;
+    private static boolean isActivityInProgress;
 
     /**
      * The {@link ViewPager} that will host the section contents.
@@ -60,15 +75,40 @@ public class WorkoutActivity extends AppCompatActivity {
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Snackbar.make(view, "Running Started. Never Give Up..", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
-                fab.setBackgroundTintList(ColorStateList.valueOf(getResources().getColor(R.color.colorAccent)));
-                fab.setImageResource(R.drawable.ic_pause_24dp);
-                PlaceholderFragment.startTimer();
+
+                if(!isActivityInProgress) {
+                    Snackbar.make(view, "Running Started. Never Give Up..", Snackbar.LENGTH_LONG)
+                            .setAction("Action", null).show();
+                    fab.setBackgroundTintList(ColorStateList.valueOf(getResources().getColor(R.color.colorAccent)));
+                    fab.setImageResource(R.drawable.ic_pause_24dp);
+                    activityStartTime = Calendar.getInstance().getTimeInMillis()/1000;
+                    isActivityInProgress = true;
+                } else {
+                    fab.setBackgroundTintList(ColorStateList.valueOf(getResources().getColor(R.color.colorGreen)));
+                    fab.setImageResource(R.drawable.ic_stop_24dp);
+                    long activityDurationInSecs = (Calendar.getInstance().getTimeInMillis()/1000) - activityStartTime;
+
+                    Snackbar.make(view, "Whoa! Your session is complete"+activityDurationInSecs, Snackbar.LENGTH_LONG)
+                            .setAction("Action", null).show();
+                    isActivityInProgress = false;
+
+                }
             }
         });
         ButterKnife.bind(this);
 
+    }
+    public static int[] splitToComponentTimes(BigDecimal biggy)
+    {
+        long longVal = biggy.longValue();
+        int hours = (int) longVal / 3600;
+        int remainder = (int) longVal - hours * 3600;
+        int mins = remainder / 60;
+        remainder = remainder - mins * 60;
+        int secs = remainder;
+
+        int[] ints = {hours , mins , secs};
+        return ints;
     }
 
 
@@ -95,6 +135,27 @@ public class WorkoutActivity extends AppCompatActivity {
     }
 
     /**
+     * Called when a value has been selected inside the chart.
+     *
+     * @param e            The selected Entry.
+     * @param dataSetIndex The index in the datasets array of the data object
+     *                     the Entrys DataSet is in.
+     * @param h            the corresponding highlight object that contains information
+     */
+    @Override
+    public void onValueSelected(Entry e, int dataSetIndex, Highlight h) {
+
+    }
+
+    /**
+     * Called when nothing has been selected or an "un-select" has been made.
+     */
+    @Override
+    public void onNothingSelected() {
+
+    }
+
+    /**
      * A placeholder fragment containing a simple view.
      */
     public static class PlaceholderFragment extends Fragment {
@@ -104,10 +165,13 @@ public class WorkoutActivity extends AppCompatActivity {
          */
         private static final String ARG_SECTION_NUMBER = "section_number";
 
-        private static CircleTimerView ctvDuration;
+        //private static CircleTimerView ctvDuration;
 
         public PlaceholderFragment() {
         }
+
+        private LineChart mChart;
+
 
         /**
          * Returns a new instance of this fragment for the given section
@@ -132,24 +196,71 @@ public class WorkoutActivity extends AppCompatActivity {
             TextView textView = (TextView) rootView.findViewById(R.id.section_label);
             //textView.setText(getString(R.string.section_format, getArguments().getInt(ARG_SECTION_NUMBER)));
 
-            if(null!= rootView.findViewById(R.id.ctv_duration)){
-                ctvDuration = (CircleTimerView) rootView.findViewById(R.id.ctv_duration);
-                ctvDuration.startTimer();
-            }
+
+            mChart = (LineChart) rootView.findViewById(R.id.chart1);
+            //mChart.setOnChartValueSelectedListener(this);
+            mChart.setDrawGridBackground(false);
+            mChart.setDescription("");
+
+            // add an empty data object
+            mChart.setData(new LineData());
+//        mChart.getXAxis().setDrawLabels(false);
+//        mChart.getXAxis().setDrawGridLines(false);
+
+            mChart.invalidate();
+
 
             return rootView;
 
         }
 
-        public static void startTimer(){
-            if (ctvDuration!=null)
-                ctvDuration.startTimer();
-        }
-        public static void pauseTimer(){
-            if (ctvDuration!=null)
-                ctvDuration.pauseTimer();
+        private void addEntry() {
+
+            LineData data = mChart.getData();
+
+            if(data != null) {
+
+                ILineDataSet set = data.getDataSetByIndex(0);
+                // set.addEntry(...); // can be called as well
+
+                if (set == null) {
+                    set = createSet();
+                    data.addDataSet(set);
+                }
+
+                // add a new x-value first
+                data.addXValue(set.getEntryCount() + "");
+
+                // choose a random dataSet
+                int randomDataSetIndex = (int) (Math.random() * data.getDataSetCount());
+
+                data.addEntry(new Entry((float) (Math.random() * 10) + 50f, set.getEntryCount()), randomDataSetIndex);
+
+                // let the chart know it's data has changed
+                mChart.notifyDataSetChanged();
+
+                mChart.setVisibleXRangeMaximum(6);
+                mChart.setVisibleYRangeMaximum(15, YAxis.AxisDependency.LEFT);
+                // this automatically refreshes the chart (calls invalidate())
+                mChart.moveViewTo(data.getXValCount()-7, 50f, YAxis.AxisDependency.LEFT);
+            }
         }
 
+
+
+        private LineDataSet createSet() {
+
+            LineDataSet set = new LineDataSet(null, "DataSet 1");
+            set.setLineWidth(2.5f);
+            set.setCircleRadius(4.5f);
+            set.setColor(Color.rgb(240, 99, 99));
+            set.setCircleColor(Color.rgb(240, 99, 99));
+            set.setHighLightColor(Color.rgb(190, 190, 190));
+            set.setAxisDependency(YAxis.AxisDependency.LEFT);
+            set.setValueTextSize(10f);
+
+            return set;
+        }
 
 
     }
