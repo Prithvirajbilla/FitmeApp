@@ -31,6 +31,8 @@ import com.github.mikephil.charting.listener.OnChartValueSelectedListener;
 
 import java.math.BigDecimal;
 import java.util.Calendar;
+import java.util.Timer;
+import java.util.TimerTask;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
@@ -84,6 +86,13 @@ public class WorkoutActivity extends AppCompatActivity implements OnChartValueSe
                     fab.setBackgroundTintList(ColorStateList.valueOf(getResources().getColor(R.color.colorAccent)));
                     fab.setImageResource(R.drawable.ic_pause_24dp);
                     activityStartTime = Calendar.getInstance().getTimeInMillis()/1000;
+                    Timer t = new Timer("workoutTimer");
+                    t.scheduleAtFixedRate(new TimerTask() {
+                        @Override
+                        public void run() {
+                            addEntry();
+                        }
+                    }, 0, 5000l);
                     isActivityInProgress = true;
                 } else {
                     fab.setBackgroundTintList(ColorStateList.valueOf(getResources().getColor(R.color.colorGreen)));
@@ -172,8 +181,7 @@ public class WorkoutActivity extends AppCompatActivity implements OnChartValueSe
         public PlaceholderFragment() {
         }
 
-        @Bind(R.id.chart1)
-        public LineChart mChart;
+        private LineChart mChart;
 
         private TextView textView;
 
@@ -195,31 +203,33 @@ public class WorkoutActivity extends AppCompatActivity implements OnChartValueSe
         @Override
         public View onCreateView(LayoutInflater inflater, ViewGroup container,
                                  Bundle savedInstanceState) {
-
             View rootView = inflater.inflate(R.layout.fragment_workout, container, false);
-            ButterKnife.bind(this, rootView);
+            mChart = (LineChart) rootView.findViewById(R.id.chart1);
+            mChart.setDrawGridBackground(false);
+            mChart.setDescription("");
+            ImageView imgBkg = (ImageView) rootView.findViewById(R.id.iamgeView);
+
+            //ButterKnife.bind(this, rootView);
             switch (getArguments().getInt(ARG_SECTION_NUMBER)){
 
-                case 0:
-                    view.setImageResource(R.drawable.coverpic);
-                    view.setVisibility(View.VISIBLE);
+                case 1:
+                    imgBkg.setImageResource(R.drawable.coverpic);
+                    imgBkg.setVisibility(View.VISIBLE);
                     mChart.setVisibility(View.GONE);
                     break;
-                case 1:
-                    view.setImageResource(R.drawable.coverpic);
-                    view.setVisibility(View.VISIBLE);
+                case 2:
+                    imgBkg.setImageResource(R.drawable.coverpic);
+                    imgBkg.setVisibility(View.VISIBLE);
                     mChart.setVisibility(View.GONE);
                     break;
 
-                case 2:
-                    view.setVisibility(View.GONE);
+                case 3:
+                    imgBkg.setVisibility(View.GONE);
                     mChart.setVisibility(View.VISIBLE);
                     break;
 
 
             }
-            mChart.setDrawGridBackground(false);
-            mChart.setDescription("");
 
             // add an empty data object
             mChart.setData(new LineData());
@@ -232,55 +242,6 @@ public class WorkoutActivity extends AppCompatActivity implements OnChartValueSe
             return rootView;
 
         }
-
-        private void addEntry() {
-
-            LineData data = mChart.getData();
-
-            if(data != null) {
-
-                ILineDataSet set = data.getDataSetByIndex(0);
-                // set.addEntry(...); // can be called as well
-
-                if (set == null) {
-                    set = createSet();
-                    data.addDataSet(set);
-                }
-
-                // add a new x-value first
-                data.addXValue(set.getEntryCount() + "");
-
-                // choose a random dataSet
-                int randomDataSetIndex = (int) (Math.random() * data.getDataSetCount());
-
-                data.addEntry(new Entry((float) (Math.random() * 10) + 50f, set.getEntryCount()), randomDataSetIndex);
-
-                // let the chart know it's data has changed
-                mChart.notifyDataSetChanged();
-
-                mChart.setVisibleXRangeMaximum(6);
-                mChart.setVisibleYRangeMaximum(15, YAxis.AxisDependency.LEFT);
-                // this automatically refreshes the chart (calls invalidate())
-                mChart.moveViewTo(data.getXValCount()-7, 50f, YAxis.AxisDependency.LEFT);
-            }
-        }
-
-
-
-        private LineDataSet createSet() {
-
-            LineDataSet set = new LineDataSet(null, "DataSet 1");
-            set.setLineWidth(2.5f);
-            set.setCircleRadius(4.5f);
-            set.setColor(Color.rgb(240, 99, 99));
-            set.setCircleColor(Color.rgb(240, 99, 99));
-            set.setHighLightColor(Color.rgb(190, 190, 190));
-            set.setAxisDependency(YAxis.AxisDependency.LEFT);
-            set.setValueTextSize(10f);
-
-            return set;
-        }
-
 
     }
 
@@ -319,5 +280,53 @@ public class WorkoutActivity extends AppCompatActivity implements OnChartValueSe
             }
             return null;
         }
+    }
+
+    private void addEntry() {
+
+        LineData data = mChart.getData();
+
+        if(data != null) {
+
+            ILineDataSet set = data.getDataSetByIndex(0);
+            // set.addEntry(...); // can be called as well
+
+            if (set == null) {
+                set = createSet();
+                data.addDataSet(set);
+            }
+
+            // add a new x-value first
+            data.addXValue(set.getEntryCount() + "");
+
+            // choose a random dataSet
+            int randomDataSetIndex = (int) (Math.random() * data.getDataSetCount());
+
+            data.addEntry(new Entry((float) (Math.random() * 10) + 50f, set.getEntryCount()), randomDataSetIndex);
+
+            // let the chart know it's data has changed
+            mChart.notifyDataSetChanged();
+
+            mChart.setVisibleXRangeMaximum(6);
+            mChart.setVisibleYRangeMaximum(15, YAxis.AxisDependency.LEFT);
+            // this automatically refreshes the chart (calls invalidate())
+            mChart.moveViewTo(data.getXValCount()-7, 50f, YAxis.AxisDependency.LEFT);
+        }
+    }
+
+
+
+    private LineDataSet createSet() {
+
+        LineDataSet set = new LineDataSet(null, "DataSet 1");
+        set.setLineWidth(2.5f);
+        set.setCircleRadius(4.5f);
+        set.setColor(Color.rgb(240, 99, 99));
+        set.setCircleColor(Color.rgb(240, 99, 99));
+        set.setHighLightColor(Color.rgb(190, 190, 190));
+        set.setAxisDependency(YAxis.AxisDependency.LEFT);
+        set.setValueTextSize(10f);
+
+        return set;
     }
 }
