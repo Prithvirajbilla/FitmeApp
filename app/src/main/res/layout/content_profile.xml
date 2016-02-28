@@ -47,15 +47,15 @@
                 <ImageButton
                     android:layout_width="80dp"
                     android:layout_height="80dp"
-                    android:id="@+id/activityBtn3"
+                    android:id="@+id/activityBtn4"
                     android:layout_margin="8dp"
-                    android:background="@drawable/cycling"/>
+                    android:background="@drawable/dancing1"/>
                 <ImageButton
                     android:layout_width="80dp"
                     android:layout_height="80dp"
-                    android:id="@+id/activityBtn4"
+                    android:id="@+id/activityBtn3"
                     android:layout_margin="8dp"
-                    android:background="@drawable/dancing"/>
+                    android:background="@drawable/cycling"/>
                 <ImageButton
                     android:layout_width="80dp"
                     android:layout_height="80dp"
