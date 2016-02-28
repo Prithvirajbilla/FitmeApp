@@ -30,7 +30,7 @@
                 android:layout_height="wrap_content"
                 android:scaleType="centerCrop"
                 android:fitsSystemWindows="true"
-                android:src="@drawable/splash_run"
+                android:src="@drawable/coverpic"
                 app:layout_collapseMode="parallax"/>
 
             <!--<com.felipecsl.gifimageview.library.GifImageView

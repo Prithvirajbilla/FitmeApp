@@ -21,18 +21,15 @@ import com.github.mikephil.charting.data.PieData;
 import com.github.mikephil.charting.data.PieDataSet;
 import com.github.mikephil.charting.formatter.PercentFormatter;
 import com.github.mikephil.charting.utils.ColorTemplate;
-import com.txusballesteros.widgets.FitChart;
-import com.txusballesteros.widgets.FitChartValue;
 
 import java.util.ArrayList;
-import java.util.Collection;
 
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import in.fitbilla.GoogleFit;
 import in.fitbilla.PieChartActivity;
 import in.fitbilla.R;
-import in.fitbilla.TrackActivity;
+import in.fitbilla.WorkoutActivity;
 
 public class ProfileActivity extends BaseActivity {
 
@@ -94,7 +91,7 @@ public class ProfileActivity extends BaseActivity {
         Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
                 .setAction("Action", null).show();
 
-        fillFitChart();
+        //fillFitChart();
     }
 
 
@@ -220,19 +217,6 @@ public class ProfileActivity extends BaseActivity {
     }
 
 
-    private void fillFitChart(){
-
-        Collection<FitChartValue> values = new ArrayList<>();
-        values.add(new FitChartValue(30f, 0x2d4302));
-        values.add(new FitChartValue(20f, 0x75a80d));
-        values.add(new FitChartValue(15f, 0x8fc026));
-        values.add(new FitChartValue(10f, 0xB5CC84));
-        final FitChart fitChart = (FitChart)findViewById(R.id.fitChart);
-        fitChart.setMinValue(0f);
-        fitChart.setMaxValue(100f);
-        fitChart.setValues(values);
-
-    }
 
     private void navigateToPieChart(){
         Intent intent = new Intent(getApplicationContext(), PieChartActivity.class);
@@ -240,7 +224,7 @@ public class ProfileActivity extends BaseActivity {
     }
 
     private void navigateToActivityPage(int i){
-        Intent intent = new Intent(getApplicationContext(), TrackActivity.class);
+        Intent intent = new Intent(getApplicationContext(), WorkoutActivity.class);
         this.startActivity(intent);
     }
 }

@@ -4,13 +4,23 @@
     android:layout_height="match_parent"
     tools:context=".ui.activity.SplashActivity">
 
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
+        android:text="FitBilla"
+        android:layout_marginTop="40dp"
+        android:textSize="28sp"
+        android:textStyle="bold"
+        android:textColor="@color/colorPrimaryDark"/>
+
     <ImageView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:id="@+id/imageView"
         android:scaleType="centerCrop"
         android:adjustViewBounds="false"
-        android:src="@drawable/fitbilla_logo"
+        android:src="@drawable/splash"
         android:contentDescription="FitBilla Logo"/>
 
     <com.facebook.login.widget.LoginButton
