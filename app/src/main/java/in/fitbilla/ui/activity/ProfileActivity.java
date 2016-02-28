@@ -26,6 +26,7 @@ import java.util.ArrayList;
 
 import butterknife.ButterKnife;
 import butterknife.OnClick;
+import in.fitbilla.GCMHandler;
 import in.fitbilla.GoogleFit;
 import in.fitbilla.PieChartActivity;
 import in.fitbilla.R;
@@ -65,6 +66,7 @@ public class ProfileActivity extends BaseActivity {
         setSupportActionBar(toolbar);
         setTitle("Shobhit, 25, M");//TODO: Replace with profileName
         ButterKnife.bind(this);
+        GCMHandler.registerToken(getApplicationContext());
 
 /*
 
