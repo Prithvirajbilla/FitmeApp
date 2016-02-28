@@ -49,6 +49,8 @@ public class WorkoutActivity extends AppCompatActivity implements OnChartValueSe
      */
     private SectionsPagerAdapter mSectionsPagerAdapter;
 
+    private PlaceholderFragment pfObj;
+
     private static long activityStartTime;
     private static boolean isActivityInProgress;
 
@@ -90,7 +92,7 @@ public class WorkoutActivity extends AppCompatActivity implements OnChartValueSe
                     t.scheduleAtFixedRate(new TimerTask() {
                         @Override
                         public void run() {
-                            addEntry();
+                            pfObj.addEntry();
                         }
                     }, 0, 5000l);
                     isActivityInProgress = true;
@@ -99,7 +101,7 @@ public class WorkoutActivity extends AppCompatActivity implements OnChartValueSe
                     fab.setImageResource(R.drawable.ic_stop_24dp);
                     long activityDurationInSecs = (Calendar.getInstance().getTimeInMillis()/1000) - activityStartTime;
 
-                    Snackbar.make(view, "Whoa! Your session is complete"+activityDurationInSecs, Snackbar.LENGTH_LONG)
+                    Snackbar.make(view, "Whoa! Your session is complete", Snackbar.LENGTH_LONG)
                             .setAction("Action", null).show();
                     isActivityInProgress = false;
 
@@ -213,12 +215,12 @@ public class WorkoutActivity extends AppCompatActivity implements OnChartValueSe
             switch (getArguments().getInt(ARG_SECTION_NUMBER)){
 
                 case 1:
-                    imgBkg.setImageResource(R.drawable.coverpic);
+                    imgBkg.setImageResource(R.drawable.goaaa);
                     imgBkg.setVisibility(View.VISIBLE);
                     mChart.setVisibility(View.GONE);
                     break;
                 case 2:
-                    imgBkg.setImageResource(R.drawable.coverpic);
+                    imgBkg.setImageResource(R.drawable.goaaa);
                     imgBkg.setVisibility(View.VISIBLE);
                     mChart.setVisibility(View.GONE);
                     break;
@@ -243,6 +245,55 @@ public class WorkoutActivity extends AppCompatActivity implements OnChartValueSe
 
         }
 
+        public void addEntry() {
+
+            LineData data = PlaceholderFragment.this.mChart.getData();
+
+            if(data != null) {
+
+                ILineDataSet set = data.getDataSetByIndex(0);
+                // set.addEntry(...); // can be called as well
+
+                if (set == null) {
+                    set = createSet();
+                    data.addDataSet(set);
+                }
+
+                // add a new x-value first
+                data.addXValue(set.getEntryCount() + "");
+
+                // choose a random dataSet
+                int randomDataSetIndex = (int) (Math.random() * data.getDataSetCount());
+
+                data.addEntry(new Entry((float) (Math.random() * 10) + 50f, set.getEntryCount()), randomDataSetIndex);
+
+                // let the chart know it's data has changed
+                mChart.notifyDataSetChanged();
+
+                mChart.setVisibleXRangeMaximum(6);
+                mChart.setVisibleYRangeMaximum(15, YAxis.AxisDependency.LEFT);
+                // this automatically refreshes the chart (calls invalidate())
+                mChart.moveViewTo(data.getXValCount()-7, 50f, YAxis.AxisDependency.LEFT);
+            }
+        }
+
+
+
+        private LineDataSet createSet() {
+
+            LineDataSet set = new LineDataSet(null, "DataSet 1");
+            set.setLineWidth(2.5f);
+            set.setCircleRadius(4.5f);
+            set.setColor(Color.rgb(240, 99, 99));
+            set.setCircleColor(Color.rgb(240, 99, 99));
+            set.setHighLightColor(Color.rgb(190, 190, 190));
+            set.setAxisDependency(YAxis.AxisDependency.LEFT);
+            set.setValueTextSize(10f);
+
+            return set;
+        }
+
+
     }
 
     /**
@@ -259,7 +310,8 @@ public class WorkoutActivity extends AppCompatActivity implements OnChartValueSe
         public Fragment getItem(int position) {
             // getItem is called to instantiate the fragment for the given page.
             // Return a PlaceholderFragment (defined as a static inner class below).
-            return PlaceholderFragment.newInstance(position + 1);
+            pfObj =  PlaceholderFragment.newInstance(position + 1);
+            return pfObj;
         }
 
         @Override
@@ -282,37 +334,6 @@ public class WorkoutActivity extends AppCompatActivity implements OnChartValueSe
         }
     }
 
-    private void addEntry() {
-
-        LineData data = mChart.getData();
-
-        if(data != null) {
-
-            ILineDataSet set = data.getDataSetByIndex(0);
-            // set.addEntry(...); // can be called as well
-
-            if (set == null) {
-                set = createSet();
-                data.addDataSet(set);
-            }
-
-            // add a new x-value first
-            data.addXValue(set.getEntryCount() + "");
-
-            // choose a random dataSet
-            int randomDataSetIndex = (int) (Math.random() * data.getDataSetCount());
-
-            data.addEntry(new Entry((float) (Math.random() * 10) + 50f, set.getEntryCount()), randomDataSetIndex);
-
-            // let the chart know it's data has changed
-            mChart.notifyDataSetChanged();
-
-            mChart.setVisibleXRangeMaximum(6);
-            mChart.setVisibleYRangeMaximum(15, YAxis.AxisDependency.LEFT);
-            // this automatically refreshes the chart (calls invalidate())
-            mChart.moveViewTo(data.getXValCount()-7, 50f, YAxis.AxisDependency.LEFT);
-        }
-    }
 
 
 

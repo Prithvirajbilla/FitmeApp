@@ -26,7 +26,6 @@ import java.util.ArrayList;
 
 import butterknife.ButterKnife;
 import butterknife.OnClick;
-import in.fitbilla.GoogleFit;
 import in.fitbilla.PieChartActivity;
 import in.fitbilla.R;
 import in.fitbilla.WorkoutActivity;
