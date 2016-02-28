@@ -24,7 +24,7 @@
             app:expandedTitleMarginEnd="64dp"
             app:layout_scrollFlags="scroll|exitUntilCollapsed">
 
-            <in.adoro.android.fitmeapp.ui.view.SquareImageView
+            <in.fitbilla.ui.view.SquareImageView
                 android:id="@+id/image"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
