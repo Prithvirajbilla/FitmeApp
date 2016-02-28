@@ -2,17 +2,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.activity.SplashActivity">
-
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="center_horizontal"
-        android:text="FitBilla"
-        android:layout_marginTop="40dp"
-        android:textSize="28sp"
-        android:textStyle="bold"
-        android:textColor="@color/colorPrimaryDark"/>
+    tools:context=".ui.activity.SplashActivity"
+    android:background="@android:color/white">
 
     <com.felipecsl.gifimageview.library.GifImageView
         android:layout_width="match_parent"
@@ -20,13 +11,28 @@
         android:id="@+id/imageView"
         android:scaleType="centerCrop"
         android:adjustViewBounds="false"
+        android:layout_marginTop="60dp"
         android:src="@drawable/splash"
+        android:background="@android:color/white"
         android:contentDescription="FitBilla Logo"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
+        android:text="FitBilla"
+        android:layout_marginTop="20dp"
+        android:textSize="28sp"
+        android:textStyle="bold"
+        android:textColor="@color/colorPrimary"/>
 
     <com.facebook.login.widget.LoginButton
         android:id="@+id/login_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:minHeight="52dp"
+        android:textSize="15dp"
         android:layout_gravity="center_horizontal|center_vertical"
         android:layout_marginTop="200dp"/>
+
 </FrameLayout>
