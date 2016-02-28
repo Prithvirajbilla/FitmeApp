@@ -1,28 +1,33 @@
-package in.fitbilla.ui.activity;
+package in.fitbilla;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.os.PersistableBundle;
 import android.widget.SeekBar;
 import android.widget.TextView;
 
+import butterknife.Bind;
+import butterknife.ButterKnife;
 import butterknife.OnClick;
-import in.fitbilla.InjuryActivity;
-import in.fitbilla.R;
+import in.fitbilla.ui.activity.BaseActivity;
 
 public class SelectDimensionActivity extends BaseActivity {
 
-    private SeekBar seekBar;
-    private TextView textView;
+    @Bind(R.id.seekBar1)
+    public SeekBar seekBar;
+    @Bind(R.id.weight_value)
+    public TextView textView;
 
-    private SeekBar seekBar1;
-    private TextView textView1;
+    @Bind(R.id.seekBar2)
+    public SeekBar seekBar1;
+    @Bind(R.id.height_value)
+    public TextView textView1;
 
     @Override
-    public void onCreate(Bundle savedInstanceState, PersistableBundle persistentState) {
-        super.onCreate(savedInstanceState, persistentState);
-        initializeVariables();
-        textView.setText(seekBar.getProgress());
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_dimension);
+        ButterKnife.bind(this);
+        textView.setText(String.valueOf(seekBar.getProgress()));
 
         seekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
 
@@ -39,11 +44,11 @@ public class SelectDimensionActivity extends BaseActivity {
 
             @Override
             public void onStopTrackingTouch(SeekBar seekBar) {
-                textView.setText(progress);
+                textView.setText(String.valueOf(progress));
             }
         });
 
-        textView1.setText(seekBar1.getProgress());
+        textView1.setText(String.valueOf(seekBar1.getProgress()));
         seekBar1.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
 
             int progress = 0;
@@ -59,7 +64,7 @@ public class SelectDimensionActivity extends BaseActivity {
 
             @Override
             public void onStopTrackingTouch(SeekBar seekBar) {
-                textView1.setText(progress);
+                textView1.setText(String.valueOf(progress));
             }
         });
     }
@@ -75,5 +80,6 @@ public class SelectDimensionActivity extends BaseActivity {
     public void clickNext() {
         Intent intent = new Intent(this, InjuryActivity.class);
         startActivity(intent);
+        finish();
     }
 }

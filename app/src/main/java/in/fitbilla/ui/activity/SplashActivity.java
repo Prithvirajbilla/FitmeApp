@@ -19,6 +19,7 @@ import butterknife.Bind;
 import butterknife.ButterKnife;
 import in.fitbilla.FitMeApplication;
 import in.fitbilla.R;
+import in.fitbilla.SelectDimensionActivity;
 import in.fitbilla.core.UserProfile;
 
 import static android.view.View.GONE;

@@ -101,8 +101,10 @@
             android:label="@string/title_activity_injury"
             android:theme="@style/AppTheme.NoActionBar"></activity>
         <activity
-            android:name="in.fitbilla.ui.activity.SelectDimensionActivity"
-            android:label="Select Dimensions"
+            android:name=".SelectDimensionActivity"
+            android:label="SelectDimension"
+
+            android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 
