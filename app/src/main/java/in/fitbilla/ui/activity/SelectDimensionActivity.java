@@ -7,6 +7,7 @@ import android.widget.SeekBar;
 import android.widget.TextView;
 
 import butterknife.OnClick;
+import in.fitbilla.InjuryActivity;
 import in.fitbilla.R;
 
 public class SelectDimensionActivity extends BaseActivity {
@@ -72,7 +73,7 @@ public class SelectDimensionActivity extends BaseActivity {
 
     @OnClick(R.id.next_button)
     public void clickNext() {
-        Intent intent = new Intent(this, ProfileActivity.class);
+        Intent intent = new Intent(this, InjuryActivity.class);
         startActivity(intent);
         finish();
     }
