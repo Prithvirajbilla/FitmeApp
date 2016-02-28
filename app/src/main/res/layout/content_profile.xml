@@ -31,13 +31,19 @@
                     android:layout_width="80dp"
                     android:layout_height="80dp"
                     android:layout_margin="8dp"
-                    android:background="@drawable/running"/>
+                    android:background="@drawable/running1"/>
                 <ImageButton
                     android:layout_width="80dp"
                     android:layout_height="80dp"
                     android:id="@+id/activityBtn2"
                     android:layout_margin="8dp"
-                    android:background="@drawable/gymming"/>
+                    android:background="@drawable/gymming1"/>
+                <ImageButton
+                    android:layout_width="80dp"
+                    android:layout_height="80dp"
+                    android:id="@+id/activityBtn6"
+                    android:layout_margin="8dp"
+                    android:background="@drawable/yoga1"/>
                 <ImageButton
                     android:layout_width="80dp"
                     android:layout_height="80dp"
@@ -56,13 +62,6 @@
                     android:id="@+id/activityBtn5"
                     android:layout_margin="8dp"
                     android:background="@drawable/swimming"/>
-
-                <ImageButton
-                    android:layout_width="80dp"
-                    android:layout_height="80dp"
-                    android:id="@+id/activityBtn6"
-                    android:layout_margin="8dp"
-                    android:background="@drawable/yoga"/>
 
             </LinearLayout>
         </HorizontalScrollView>
