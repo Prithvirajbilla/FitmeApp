@@ -91,6 +91,10 @@
             android:name="in.fitbilla.WorkoutActivity"
             android:label="@string/title_activity_workout"
             android:theme="@style/AppTheme.NoActionBar"></activity>
+        <activity
+            android:name="in.fitbilla.ui.activity.SelectDimensionActivity"
+            android:label="Select Dimensions"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 
 </manifest>

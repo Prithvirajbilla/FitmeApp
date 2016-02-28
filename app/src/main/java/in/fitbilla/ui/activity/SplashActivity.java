@@ -60,7 +60,7 @@ public class SplashActivity extends BaseActivity {
             loginButton.registerCallback(callbackManager, new FacebookCallback<LoginResult>() {
                 @Override
                 public void onSuccess(LoginResult loginResult) {
-                    Intent intent = new Intent(SplashActivity.this, ProfileActivity.class);
+                    Intent intent = new Intent(SplashActivity.this, SelectDimensionActivity.class);
                     startActivity(intent);
                     finish();
                 }
@@ -85,7 +85,7 @@ public class SplashActivity extends BaseActivity {
                 loginButton.registerCallback(callbackManager, new FacebookCallback<LoginResult>() {
                     @Override
                     public void onSuccess(LoginResult loginResult) {
-                        Intent intent = new Intent(SplashActivity.this, ProfileActivity.class);
+                        Intent intent = new Intent(SplashActivity.this, SelectDimensionActivity.class);
                         startActivity(intent);
                         finish();
                     }
