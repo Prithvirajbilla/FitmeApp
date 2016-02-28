@@ -29,6 +29,7 @@ import java.util.Collection;
 
 import butterknife.ButterKnife;
 import butterknife.OnClick;
+import in.fitbilla.GoogleFit;
 import in.fitbilla.PieChartActivity;
 import in.fitbilla.R;
 import in.fitbilla.TrackActivity;
@@ -84,6 +85,8 @@ public class ProfileActivity extends BaseActivity {
         //fillFitChart();
 
         fillTodayProfileChart();
+        GoogleFit googleFit = new GoogleFit();
+        googleFit.readHistoryData();
     }
 
     @OnClick(R.id.fab)
