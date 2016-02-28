@@ -12,6 +12,7 @@ import com.facebook.FacebookCallback;
 import com.facebook.FacebookException;
 import com.facebook.login.LoginResult;
 import com.facebook.login.widget.LoginButton;
+import com.felipecsl.gifimageview.library.GifImageView;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
@@ -32,6 +33,9 @@ public class SplashActivity extends BaseActivity {
     AccessToken accessTokenFB;
 
     CallbackManager callbackManager;
+
+    @Bind(R.id.imageView)
+    GifImageView imageView;
 
     @Bind(R.id.login_button)
     LoginButton loginButton;
@@ -120,6 +124,18 @@ public class SplashActivity extends BaseActivity {
                 finish();
             }
         }
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        imageView.startAnimation();
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        imageView.stopAnimation();
     }
 
     @Override
