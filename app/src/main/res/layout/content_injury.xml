@@ -18,11 +18,19 @@
         android:layout_height="wrap_content"
         android:id="@+id/img_injury"
         android:src="@drawable/injury1"
+        android:scaleType="fitCenter"
+        android:layout_above="@id/next_button"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
         android:background="?android:attr/selectableItemBackground"/>
 
 
-
+    <Button
+        android:id="@+id/next_button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Next"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="48dp"/>
 
 </RelativeLayout>

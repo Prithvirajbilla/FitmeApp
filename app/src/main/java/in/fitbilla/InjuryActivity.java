@@ -1,5 +1,6 @@
 package in.fitbilla;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -11,6 +12,7 @@ import android.widget.ImageButton;
 import butterknife.Bind;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
+import in.fitbilla.ui.activity.ProfileActivity;
 
 public class InjuryActivity extends AppCompatActivity {
 
@@ -39,5 +41,12 @@ public class InjuryActivity extends AppCompatActivity {
     @OnClick(R.id.img_injury)
     public void onInjury(){
         imgInjury.setImageResource(R.drawable.injury);
+    }
+
+    @OnClick(R.id.next_button)
+    public void onClickNext() {
+        Intent intent = new Intent(this, ProfileActivity.class);
+        startActivity(intent);
+        finish();
     }
 }

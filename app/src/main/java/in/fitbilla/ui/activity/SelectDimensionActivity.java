@@ -75,6 +75,5 @@ public class SelectDimensionActivity extends BaseActivity {
     public void clickNext() {
         Intent intent = new Intent(this, InjuryActivity.class);
         startActivity(intent);
-        finish();
     }
 }
