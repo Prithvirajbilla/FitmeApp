@@ -13,31 +13,125 @@
         android:layout_height="wrap_content"
         android:orientation="vertical">
 
-        <Button
+
+
+        <HorizontalScrollView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/horizontalScrollView"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="50dp">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+
+                <ImageButton
+                    android:id="@+id/activityBtn1"
+                    android:layout_width="80dp"
+                    android:layout_height="80dp"
+                    android:layout_margin="8dp"
+                    android:background="@drawable/running"/>
+                <ImageButton
+                    android:layout_width="80dp"
+                    android:layout_height="80dp"
+                    android:id="@+id/activityBtn2"
+                    android:layout_margin="8dp"
+                    android:background="@drawable/gymming"/>
+                <ImageButton
+                    android:layout_width="80dp"
+                    android:layout_height="80dp"
+                    android:id="@+id/activityBtn3"
+                    android:layout_margin="8dp"
+                    android:background="@drawable/cycling"/>
+                <ImageButton
+                    android:layout_width="80dp"
+                    android:layout_height="80dp"
+                    android:id="@+id/activityBtn4"
+                    android:layout_margin="8dp"
+                    android:background="@drawable/dancing"/>
+                <ImageButton
+                    android:layout_width="80dp"
+                    android:layout_height="80dp"
+                    android:id="@+id/activityBtn5"
+                    android:layout_margin="8dp"
+                    android:background="@drawable/swimming"/>
+
+                <ImageButton
+                    android:layout_width="80dp"
+                    android:layout_height="80dp"
+                    android:id="@+id/activityBtn6"
+                    android:layout_margin="8dp"
+                    android:background="@drawable/yoga"/>
+
+            </LinearLayout>
+        </HorizontalScrollView>
+
+        <!--Button
             android:id="@+id/startActivityBtn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Start An Activity"
-            android:layout_gravity="center_horizontal" />
+            android:layout_gravity="center_horizontal"
+            android:layout_margin="100dp" /-->
 
+        <Spinner
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/spinner"
+            android:entries="@array/measure_params"
+            android:layout_gravity="center"
+            style="@style/TextAppearance.AppCompat.Display1"
+            android:layout_marginTop="20dp"/>
+
+        <!--<ToggleButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/toggleButton"
+            android:layout_gravity="center_horizontal"
+            android:checked="false"
+            android:textOn="Start"
+            android:textOff="Stop"
+            android:background="#64dd17"
+            android:padding="10dp"/>-->
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Today"
+            android:layout_margin="20dp"/>
+
+
+        <com.github.mikephil.charting.charts.PieChart
+            android:id="@+id/chartTodayProfile"
+            android:layout_width="match_parent"
+            android:layout_height="300dp"
+            android:layout_above="@+id/seekBar1"
+            android:layout_margin="20dp"
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="This Week"/>
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="This Month"/>
         <com.txusballesteros.widgets.FitChart
             android:id="@+id/fitChart"
             android:layout_width="200dp"
             android:layout_height="200dp"
-            app:strokeSize="10dp"
+            app:strokeSize="20dp"
             app:valueStrokeColor="#ff0000"
             app:backStrokeColor="#00ff00"
-            app:animationMode="overdraw"
+            app:animationMode="linear"
             android:layout_gravity="center"
-            android:layout_margin="100dp"/>
+            android:layout_margin="10dp"/>
 
 
-    <TextView
-        android:id="@+id/random_text"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_margin="@dimen/text_margin"
-        android:text="@string/large_text" />
 
     </LinearLayout>
 

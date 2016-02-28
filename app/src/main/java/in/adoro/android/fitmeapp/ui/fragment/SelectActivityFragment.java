@@ -9,9 +9,13 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import butterknife.Bind;
 import butterknife.ButterKnife;
 import in.adoro.android.fitmeapp.R;
+import in.adoro.android.fitmeapp.core.PA;
 import in.adoro.android.fitmeapp.ui.adapter.SelectActivityAdapter;
 
 
@@ -21,6 +25,8 @@ public class SelectActivityFragment extends Fragment {
     public RecyclerView mRecyclerView;
 
     private SelectActivityAdapter mAdapter;
+    private static List<PA> values = new ArrayList<PA>();
+
     private GridLayoutManager mGridLayoutManager;
 
     @Nullable
