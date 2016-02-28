@@ -17,6 +17,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.github.mikephil.charting.charts.LineChart;
@@ -31,6 +32,7 @@ import com.github.mikephil.charting.listener.OnChartValueSelectedListener;
 import java.math.BigDecimal;
 import java.util.Calendar;
 
+import butterknife.Bind;
 import butterknife.ButterKnife;
 
 public class WorkoutActivity extends AppCompatActivity implements OnChartValueSelectedListener {
@@ -170,8 +172,13 @@ public class WorkoutActivity extends AppCompatActivity implements OnChartValueSe
         public PlaceholderFragment() {
         }
 
+        @Bind(R.id.chart1)
         private LineChart mChart;
 
+        private TextView textView;
+
+        @Bind(R.id.imageView)
+        private ImageView view;
 
         /**
          * Returns a new instance of this fragment for the given section
@@ -188,17 +195,29 @@ public class WorkoutActivity extends AppCompatActivity implements OnChartValueSe
         @Override
         public View onCreateView(LayoutInflater inflater, ViewGroup container,
                                  Bundle savedInstanceState) {
-            switch (getArguments().getInt(ARG_SECTION_NUMBER)){
-
-            }
 
             View rootView = inflater.inflate(R.layout.fragment_workout, container, false);
-            TextView textView = (TextView) rootView.findViewById(R.id.section_label);
-            //textView.setText(getString(R.string.section_format, getArguments().getInt(ARG_SECTION_NUMBER)));
+            ButterKnife.bind(this, rootView);
+            switch (getArguments().getInt(ARG_SECTION_NUMBER)){
+
+                case 0:
+                    view.setImageResource(R.drawable.coverpic);
+                    view.setVisibility(View.VISIBLE);
+                    mChart.setVisibility(View.GONE);
+                    break;
+                case 1:
+                    view.setImageResource(R.drawable.coverpic);
+                    view.setVisibility(View.VISIBLE);
+                    mChart.setVisibility(View.GONE);
+                    break;
+
+                case 2:
+                    view.setVisibility(View.GONE);
+                    mChart.setVisibility(View.VISIBLE);
+                    break;
 
 
-            mChart = (LineChart) rootView.findViewById(R.id.chart1);
-            //mChart.setOnChartValueSelectedListener(this);
+            }
             mChart.setDrawGridBackground(false);
             mChart.setDescription("");
 
