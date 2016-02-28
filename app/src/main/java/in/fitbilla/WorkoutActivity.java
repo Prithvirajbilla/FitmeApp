@@ -173,12 +173,12 @@ public class WorkoutActivity extends AppCompatActivity implements OnChartValueSe
         }
 
         @Bind(R.id.chart1)
-        private LineChart mChart;
+        public LineChart mChart;
 
         private TextView textView;
 
         @Bind(R.id.imageView)
-        private ImageView view;
+        public ImageView view;
 
         /**
          * Returns a new instance of this fragment for the given section
