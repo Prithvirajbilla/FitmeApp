@@ -172,8 +172,7 @@ public class WorkoutActivity extends AppCompatActivity implements OnChartValueSe
         public PlaceholderFragment() {
         }
 
-        @Bind(R.id.chart1)
-        public LineChart mChart;
+        private LineChart mChart;
 
         private TextView textView;
 
@@ -197,29 +196,32 @@ public class WorkoutActivity extends AppCompatActivity implements OnChartValueSe
                                  Bundle savedInstanceState) {
 
             View rootView = inflater.inflate(R.layout.fragment_workout, container, false);
-            ButterKnife.bind(this, rootView);
+            mChart = (LineChart) rootView.findViewById(R.id.chart1);
+            mChart.setDrawGridBackground(false);
+            mChart.setDescription("");
+            ImageView imgBkg = (ImageView) rootView.findViewById(R.id.iamgeView);
+
+            //ButterKnife.bind(this, rootView);
             switch (getArguments().getInt(ARG_SECTION_NUMBER)){
 
-                case 0:
-                    view.setImageResource(R.drawable.coverpic);
-                    view.setVisibility(View.VISIBLE);
+                case 1:
+                    imgBkg.setImageResource(R.drawable.coverpic);
+                    imgBkg.setVisibility(View.VISIBLE);
                     mChart.setVisibility(View.GONE);
                     break;
-                case 1:
-                    view.setImageResource(R.drawable.coverpic);
-                    view.setVisibility(View.VISIBLE);
+                case 2:
+                    imgBkg.setImageResource(R.drawable.coverpic);
+                    imgBkg.setVisibility(View.VISIBLE);
                     mChart.setVisibility(View.GONE);
                     break;
 
-                case 2:
-                    view.setVisibility(View.GONE);
+                case 3:
+                    imgBkg.setVisibility(View.GONE);
                     mChart.setVisibility(View.VISIBLE);
                     break;
 
 
             }
-            mChart.setDrawGridBackground(false);
-            mChart.setDescription("");
 
             // add an empty data object
             mChart.setData(new LineData());
