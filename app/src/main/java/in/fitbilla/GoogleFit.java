@@ -1,5 +1,6 @@
 package in.fitbilla;
 
+import android.content.BroadcastReceiver;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 import android.util.Log;
@@ -12,7 +13,17 @@ import com.google.android.gms.common.api.Scope;
 import com.google.android.gms.common.api.Status;
 import com.google.android.gms.fitness.Fitness;
 import com.google.android.gms.fitness.FitnessStatusCodes;
+import com.google.android.gms.fitness.data.DataPoint;
+import com.google.android.gms.fitness.data.DataSet;
 import com.google.android.gms.fitness.data.DataType;
+import com.google.android.gms.fitness.data.Field;
+import com.google.android.gms.fitness.request.DataReadRequest;
+import com.google.android.gms.fitness.result.DataReadResult;
+
+import java.text.DateFormat;
+import java.util.Date;
+import java.util.List;
+import java.util.concurrent.TimeUnit;
 
 
 /**
@@ -21,6 +32,53 @@ import com.google.android.gms.fitness.data.DataType;
 public class GoogleFit extends FragmentActivity implements GoogleApiClient.OnConnectionFailedListener{
     private static final String TAG = "";
     private GoogleApiClient mClient = null;
+
+    public void readHistoryData(){
+        // Setting a start and end date using a range of 1 week before this moment.
+        long WEEK_IN_MS = 1000*60*60*24*7;
+        Date now = new Date();
+        long endTime =now.getTime();
+        long startTime = endTime - WEEK_IN_MS;
+
+        DataReadRequest readRequest = new DataReadRequest.Builder()
+                // The data request can specify multiple data types to return, effectively
+                // combining multiple data queries into one call.
+                // In this example, it's very unlikely that the request is for several hundred
+                // datapoints each consisting of a few steps and a timestamp.  The more likely
+                // scenario is wanting to see how many steps were walked per day, for 7 days.
+                .aggregate(DataType.TYPE_CALORIES_CONSUMED, DataType.AGGREGATE_ACTIVITY_SUMMARY)
+                        // Analogous to a "Group By" in SQL, defines how data should be aggregated.
+                        // bucketByTime allows for a time span, whereas bucketBySession would allow
+                        // bucketing by "sessions", which would need to be defined in code.
+                .bucketByTime(1, TimeUnit.DAYS)
+                .setTimeRange(startTime, endTime, TimeUnit.MILLISECONDS)
+                .build();
+        DataReadResult dataReadResult =
+                Fitness.HistoryApi.readData(mClient, readRequest).await(1, TimeUnit.MINUTES);
+//        PendingResult<DataReadResult> pendingResult = Fitness.HISTORY_API.(mClient, readRequest);
+
+        List<DataSet> dataSets = dataReadResult.getDataSets();
+        for (DataSet dataSet: dataSets){
+            processDataSet(dataSet);
+        }
+    }
+
+    private void processDataSet(DataSet dataSet) {
+        Log.i(TAG, "Data returned for Data type: " + dataSet.getDataType().getName());
+
+        for (DataPoint dp : dataSet.getDataPoints()) {
+            long dpStartTime = dp.getStartTime(TimeUnit.MILLISECONDS);
+            long dpEndTime = dp.getEndTime(TimeUnit.MILLISECONDS);
+            Log.i(TAG, "Data point:");
+            Log.i(TAG, "\tType: " + dp.getDataType().getName());
+            Log.i(TAG, "\tStart: " + dpStartTime);
+            Log.i(TAG, "\tEnd: " + dpEndTime);
+            for(Field field : dp.getDataType().getFields()) {
+                Log.i(TAG, "\tField: " + field.getName() +
+                        " Value: " + dp.getValue(field));
+            }
+        }
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -56,9 +114,9 @@ public class GoogleFit extends FragmentActivity implements GoogleApiClient.OnCon
     }
 
     private void buildFitnessClient() {
-        if (mClient == null && checkPermissions()) {
+        if (mClient == null) {
             mClient = new GoogleApiClient.Builder(this)
-                    .addApi(Fitness.SENSORS_API)
+                    .addApi(Fitness.RECORDING_API)
                     .addScope(new Scope(Scopes.FITNESS_LOCATION_READ))
                     .addConnectionCallbacks(
                             new GoogleApiClient.ConnectionCallbacks() {
@@ -113,7 +171,7 @@ public class GoogleFit extends FragmentActivity implements GoogleApiClient.OnCon
     }
 
     private void findFitnessDataSources(){
-        Fitness.RecordingApi.subscribe(mClient, DataType.TYPE_ACTIVITY_SAMPLE)
+        Fitness.RecordingApi.subscribe(mClient, DataType.TYPE_ACTIVITY_SEGMENT)
                 .setResultCallback(new ResultCallback<Status>() {
                     @Override
                     public void onResult(Status status) {
