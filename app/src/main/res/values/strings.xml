@@ -80,4 +80,8 @@
     <string name="facebook_app_id">1669010216686276</string>
     <string name="title_activity_workout">WorkoutActivity</string>
     <string name="section_format">Hello World from section: %1$d</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="title_activity_track">TrackActivity</string>
 </resources>
